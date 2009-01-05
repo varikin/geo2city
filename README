@@ -1,0 +1,5 @@
+Quickly resolves the nearest city/state for any latitude/longitude within the 
+US. This service can quickly be expanded to outside countries, all that's needed
+is a lat/lon resolution table.
+
+This was created on a challenge to port http://geo2city.jobdig.com to Python. I accepted the challenge and ported it to both Python and AppEngine-my first attempt at a GAE app. 

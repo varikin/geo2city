@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<style type="text/css">
+    label {
+        display:block;
+        float:left;
+        width:100px;
+    }
+</style>
+<title>Geo 2 Street Resolution</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head><body>
+<h1>Quick-n-dirty geo-location to city resolution</h1>
+
+<p>
+  This service quickly resolves the nearest city/state for any latitude/longitude within the US. <em>This service can 
+  quickly be expanded to outside countries, all that's needed is a lat/lon 
+  resolution table.</em>
+</p>
+
+<p>
+  This was created on a challenge to port <a href="http://geo2city.jobdig.com/">geo2city</a> to Python.
+  I accepted the challenge and ported it to both Python and AppEngine-my first attempt at a GAE app.
+</p>
+
+<h2>
+  <a href="http://geo2street.appspot.com/?loc=44.896352,-93.493097" onclick="this.target='_blank'">Example</a>
+  </h2>
+<code>http://geo2street.appspot.com/?loc=44.896352,-93.493097</code>
+
+<h2>Results</h2>
+{% if locations %}
+  <ol>
+  {% for loc in locations %}
+    <li>{{ loc }}</li>
+  {% endfor %}
+  </ol>
+{% endif %}
+
+<form method="get" style="border:1px solid black;background:#eee;padding:5px" action="http://geo2street.appspot.com/">
+    <div>
+        <label for="loc">Locations</label> <textarea id="loc" name="loc"></textarea>
+    </div>
+    <div>
+        <button type="submit">Get Results</button>
+    </div>
+</form>
+
+<h2>Parameters:</h2>
+<ul>
+<li><strong>loc</strong>: can include multiple parameters, using [], in the format of <em>44.896352,-93.493097</em></li>
+<li><strong>format</strong>: <em>xml</em> for XML, <em>json</em> for JSON, <em>human</em> to be human readable</li>
+</ul>
+You can get a city-to-latitude file stored in city/state/lat/long format from <a href="http://sourceforge.net/projects/zips/" onclick="this.target='_blank'">http://sourceforge.net/projects/zips/</a>.
+</p>
+
+</body></html>
